@@ -3,5 +3,12 @@ import "dotenv/config"
 export const ENV = {
     PORT: process.env.PORT || 5001,
     MONGO_URI: process.env.MONGO_URI,
-    NODE_ENV: process.env.NODE_ENV || "development"
+    NODE_ENV: process.env.NODE_ENV || "development",
+    CLERK_PUBLISHABLE_KEY: process.env.CLERK_PUBLISHABLE_KEY,
+    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+    STREAM_API_KEY:STREAM_API_KEY,
+    STREAM_API_SECRET:STREAM_API_SECRET,
+    SENTRY_DSN:SENTRY_DSN,
+    INGEST_EVENT_KEY:INGEST_EVENT_KEY,
+    INGEST_SIGNING_KEY:INGEST_SIGNING_KEY
 };
