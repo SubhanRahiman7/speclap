@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "dev": "NODE_OPTIONS='--import ./instrument.js' nodemon src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -12,11 +12,13 @@
   "description": "",
   "dependencies": {
     "@clerk/express": "^1.7.4",
+    "@sentry/node": "^10.1.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "inngest": "^3.40.1",
     "mongoose": "^8.16.5",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "stream-chat": "^8.60.0"
   }
 }
