@@ -1,0 +1,345 @@
+.auth-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  background: linear-gradient(
+      125deg,
+      #1e1b4b 0%,
+      #312e81 25%,
+      #3730a3 50%,
+      #6366f1 75%,
+      #8b5cf6 100%
+    ),
+    radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.auth-right {
+  flex: 0.8;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.auth-hero {
+  max-width: 400px;
+  color: white;
+  z-index: 2;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 60px rgba(99, 102, 241, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.brand-logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: pulse 1.5s ease-in-out infinite, logoSpin 0.65s linear;
+  transition: all 0.2s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.1) rotate(360deg);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+  transition: all 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.brand-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 50%, #ddd6fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 30%, #ddd6fe 60%, #ffffff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 1.5rem;
+  animation: fadeInUp 0.5s ease-out 0.2s both, shimmer 2s ease-in-out infinite;
+  text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 0.95;
+  color: #f8f9fa;
+  animation: fadeInUp 0.5s ease-out 0.3s both;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.01em;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 1.8s ease-out 0.5s both;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(99, 102, 241, 0.12);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: slideInLeft 0.5s ease-out both;
+  position: relative;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+
+.feature-item:nth-child(1) { animation-delay: 1s; }
+.feature-item:nth-child(2) { animation-delay: 1.1s; }
+.feature-item:nth-child(3) { animation-delay: 1.2s; }
+.feature-item:nth-child(4) { animation-delay: 1.3s; }
+.feature-item:nth-child(5) { animation-delay: 1.4s; }
+
+.feature-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.feature-item:hover::before {
+  left: 100%;
+}
+
+.feature-item:hover {
+  background: rgba(99, 102, 241, 0.2);
+  transform: translateX(0.75rem) scale(1.02);
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.feature-icon {
+  font-size: 1.2rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(99, 102, 241, 0.2));
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.2);
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.feature-icon:hover {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.cta-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3), 0 6px 15px rgba(139, 92, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  letter-spacing: -0.01em;
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: all 0.6s ease;
+  animation: shimmer 2s infinite;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 60px rgba(99, 102, 241, 0.4), 0 12px 30px rgba(139, 92, 246, 0.3),
+    inset 0 2px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.button-arrow {
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover .button-arrow {
+  transform: translateX(0.25rem);
+}
+
+.auth-image-container {
+  position: relative;
+  max-width: 360px;
+  max-height: 450px;
+  width: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.25), 0 10px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: float 4s ease-in-out infinite;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.auth-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.auth-image-container:hover .auth-image {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+  }
+
+  .auth-left {
+    padding: 1rem;
+  }
+
+  .auth-hero {
+    padding: 1.5rem;
+  }
+
+  .auth-right {
+    min-height: 35vh;
+    padding: 0.75rem;
+  }
+
+  .auth-image-container {
+    max-width: 280px;
+    max-height: 320px;
+    animation: float 5s ease-in-out infinite;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .brand-name {
+    font-size: 1.5rem;
+  }
+}
+
+.auth-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(1px 1px at 25px 35px, rgba(116, 58, 213, 0.4), transparent),
+    radial-gradient(1px 1px at 85px 75px, rgba(74, 21, 75, 0.3), transparent),
+    radial-gradient(1px 1px at 145px 45px, rgba(114, 9, 183, 0.3), transparent),
+    radial-gradient(1px 1px at 195px 85px, rgba(83, 52, 131, 0.3), transparent);
+  background-repeat: repeat;
+  background-size: 250px 120px;
+  animation: gentleFloat 25s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.auth-container::after {
+  content: "";
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(116, 58, 213, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: subtleDrift 40s linear infinite;
+  pointer-events: none;
+}
