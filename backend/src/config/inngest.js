@@ -26,7 +26,7 @@ const syncUser = inngest.createFunction(
 
         // streamChat upsert user
         await upsertStreamUser({
-            id: newUser.clerkId.toSring(),
+            id: newUser.clerkId.toString(),
             name: newUser.name,
             image: newUser.image,
             email: newUser.email,
