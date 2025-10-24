@@ -1,4 +1,6 @@
 /* Reset default margins and padding */
+@import "tailwindcss";
+
 * {
   margin: 0;
   padding: 0;
