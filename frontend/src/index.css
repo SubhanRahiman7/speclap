@@ -56,10 +56,10 @@ html, body {
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(138, 43, 226, 0.6), 0 0 60px rgba(156, 39, 176, 0.4);
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.6), 0 0 60px rgba(139, 92, 246, 0.4);
   }
 }
 
