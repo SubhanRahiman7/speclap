@@ -246,8 +246,8 @@
 
 .auth-image-container {
   position: relative;
-  max-width: 360px;
-  max-height: 450px;
+  max-width: 420px;
+  max-height: 520px;
   width: 100%;
   border-radius: 1.5rem;
   overflow: hidden;
@@ -299,8 +299,8 @@
   }
 
   .auth-image-container {
-    max-width: 280px;
-    max-height: 320px;
+    max-width: 320px;
+    max-height: 380px;
     animation: float 5s ease-in-out infinite;
   }
 
