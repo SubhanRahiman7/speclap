@@ -1,11 +1,11 @@
-import "../instrument.mjs";
+import "../instrument.js";
 import express from "express";
 import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
 import { clerkMiddleware } from "@clerk/express";
 import { functions, inngest } from "./config/inngest.js";
 import { serve } from "inngest/express";
-import chatRoutes from "./routes/chat.route.js";
+import chatRoutes from "../routes/chat.route.js";
 
 import cors from "cors";
 
@@ -14,7 +14,28 @@ import * as Sentry from "@sentry/node";
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
+// CORS configuration - allow localhost for development
+const corsOptions = {
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        // Allow localhost for development
+        if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+            return callback(null, true);
+        }
+        
+        // Allow production client URL
+        if (origin === ENV.CLIENT_URL) {
+            return callback(null, true);
+        }
+        
+        callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(clerkMiddleware()); // req.auth will be available in the request object
 
 app.get("/debug-sentry", (req, res) => {
