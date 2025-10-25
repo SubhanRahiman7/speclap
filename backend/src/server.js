@@ -14,15 +14,20 @@ import * as Sentry from "@sentry/node";
 const app = express();
 
 app.use(express.json());
-// CORS configuration - allow all origins for now
+// CORS configuration - specific origins for credentials
 app.use(cors({
-    origin: true, // Allow all origins
+    origin: ['http://localhost:5173', 'http://localhost:5174', 'https://speclap-frontend.vercel.app'],
     credentials: true
 }));
 
 // Additional CORS headers as backup
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    const origin = req.headers.origin;
+    const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174', 'https://speclap-frontend.vercel.app'];
+    
+    if (allowedOrigins.includes(origin)) {
+        res.header('Access-Control-Allow-Origin', origin);
+    }
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.header('Access-Control-Allow-Credentials', 'true');
@@ -76,12 +81,14 @@ const startServer = async () => {
       console.log("Continuing without database...");
     }
     
+    // For Vercel, we need to export the app, not listen on a port
     if (ENV.NODE_ENV !== "production") {
       app.listen(ENV.PORT, () => {
         console.log("✅ Server started on port:", ENV.PORT);
       });
     } else {
       console.log("✅ Production mode - server ready for Vercel");
+      // In production, Vercel will handle the server
     }
   } catch (error) {
     console.error("❌ Error starting server:", error);
