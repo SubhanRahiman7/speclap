@@ -186,17 +186,6 @@ speclap/
 
 ## 🎯 Key Features Deep Dive
 
-### 🔐 **Authentication Flow**
-```mermaid
-graph TD
-    A[User visits app] --> B[Check authentication]
-    B -->|Not authenticated| C[Redirect to AuthPage]
-    B -->|Authenticated| D[Load HomePage]
-    C --> E[Google OAuth with Clerk]
-    E --> F[Get JWT token]
-    F --> D
-    D --> G[Initialize Stream Chat]
-```
 
 ### 💬 **Real-time Chat Architecture**
 - **Stream Chat SDK** for real-time messaging
