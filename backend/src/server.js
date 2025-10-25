@@ -14,7 +14,7 @@ import * as Sentry from "@sentry/node";
 const app = express();
 
 app.use(express.json());
-// CORS configuration - allow localhost for development
+// CORS configuration - allow localhost for development and production frontend
 const corsOptions = {
     origin: function (origin, callback) {
         // Allow requests with no origin (like mobile apps or curl requests)
@@ -30,6 +30,12 @@ const corsOptions = {
             return callback(null, true);
         }
         
+        // Allow the new frontend URL
+        if (origin.includes('speclap-frontend') && origin.includes('vercel.app')) {
+            return callback(null, true);
+        }
+        
+        console.log('CORS blocked origin:', origin);
         callback(new Error('Not allowed by CORS'));
     },
     credentials: true
