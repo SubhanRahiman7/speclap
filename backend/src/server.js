@@ -43,6 +43,15 @@ app.get("/", (req, res) => {
   res.send("Hello World! 123");
 });
 
+// Test endpoint to verify CORS is working
+app.get("/test", (req, res) => {
+  res.json({ 
+    message: "Backend is working!", 
+    timestamp: new Date().toISOString(),
+    cors: "CORS headers should be present"
+  });
+});
+
 app.use("/api/inngest", serve({ client: inngest, functions }));
 app.use("/api/chat", chatRoutes);
 
@@ -50,11 +59,25 @@ Sentry.setupExpressErrorHandler(app);
 
 const startServer = async () => {
   try {
-    await connectDB();
+    console.log("Starting server...");
+    console.log("Environment:", ENV.NODE_ENV);
+    console.log("Port:", ENV.PORT);
+    
+    // Try to connect to database, but don't fail if it doesn't work
+    try {
+      await connectDB();
+      console.log("Database connected successfully");
+    } catch (dbError) {
+      console.warn("Database connection failed:", dbError.message);
+      console.log("Continuing without database...");
+    }
+    
     if (ENV.NODE_ENV !== "production") {
       app.listen(ENV.PORT, () => {
         console.log("Server started on port:", ENV.PORT);
       });
+    } else {
+      console.log("Production mode - server ready for Vercel");
     }
   } catch (error) {
     console.error("Error starting server:", error);
