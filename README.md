@@ -76,8 +76,8 @@
 - **Stream Chat SDK** - Chat backend
 - **Clerk Express** - Authentication middleware
 - **CORS** - Cross-origin resource sharing
-- **Sentry** - Error monitoring
-- **Inngest** - Background job processing
+- **Sentry** - Error monitoring and performance tracking
+- **Inngest** - Background job processing and event-driven workflows
 
 ### **Deployment**
 - **Vercel** - Frontend & Backend hosting
