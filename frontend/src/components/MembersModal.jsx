@@ -3,7 +3,7 @@ import { XIcon } from "lucide-react";
 function MembersModal({ members, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-      <div className="bg-gradient-to-br from-slate-900/95 via-indigo-900/95 to-purple-900/95 backdrop-blur-xl border border-indigo-500/20 rounded-2xl shadow-2xl w-full max-w-lg mx-4 max-h-[85vh] overflow-hidden">
+      <div className="bg-linear-to-br from-slate-900/95 via-indigo-900/95 to-purple-900/95 backdrop-blur-xl border border-indigo-500/20 rounded-2xl shadow-2xl w-full max-w-lg mx-4 max-h-[85vh] overflow-hidden">
         {/* HEADER */}
         <div className="flex items-center justify-between border-b border-white/10 px-8 py-5">
           <h2 className="text-xl font-bold text-white">Channel Members</h2>
