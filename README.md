@@ -259,105 +259,6 @@ npm run lint     # Run ESLint
 - **TypeScript** support (coming soon)
 - **Testing** with Jest (coming soon)
 
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### **Development Guidelines**
-- Follow the existing code style
-- Write meaningful commit messages
-- Add tests for new features
-- Update documentation as needed
-
----
-
-## 📊 Performance Metrics
-
-- **⚡ Fast Loading**: < 2s initial load time
-- **🔄 Real-time**: < 100ms message delivery
-- **📱 Mobile**: 100% responsive design
-- **🌐 Global**: CDN-powered content delivery
-- **🔒 Secure**: End-to-end encryption
-
----
-
-## 🐛 Troubleshooting
-
-### **Common Issues**
-
-#### CORS Errors
-```bash
-# Check CORS configuration in backend
-# Ensure frontend URL is in allowed origins
-```
-
-#### Authentication Issues
-```bash
-# Verify Clerk keys are correct
-# Check environment variables
-# Ensure JWT token is being sent
-```
-
-#### Database Connection
-```bash
-# Check MongoDB connection string
-# Verify network access in Atlas
-# Check environment variables
-```
-
----
-
-## 📈 Roadmap
-
-### **Phase 1** ✅
-- [x] Basic chat functionality
-- [x] User authentication
-- [x] Channel management
-- [x] Video calling
-
-### **Phase 2** 🚧
-- [ ] Message reactions
-- [ ] File sharing
-- [ ] Message search
-- [ ] User presence
-
-### **Phase 3** 📋
-- [ ] Mobile app (React Native)
-- [ ] Desktop app (Electron)
-- [ ] Advanced analytics
-- [ ] Bot integration
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- **Stream.io** for amazing chat and video SDKs
-- **Clerk** for seamless authentication
-- **Vercel** for excellent hosting platform
-- **React** team for the amazing framework
-- **Tailwind CSS** for beautiful styling
-
----
-
-## 📞 Support
-
-- **Email**: support@speclap.com
-- **Discord**: [Join our community](https://discord.gg/speclap)
-- **GitHub Issues**: [Report bugs](https://github.com/SubhanRahiman7/speclap/issues)
 
 ---
 
@@ -366,7 +267,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 **Made with ❤️ by [Subhan Rahiman](https://github.com/SubhanRahiman7)**
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SubhanRahiman7)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/subhan-rahiman)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/subhan_rahiman)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/subhan-rahiman-b307b92b1/)
+[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/subhan1738897)
 
 </div>
