@@ -12,8 +12,6 @@ export const useStreamChat = () => {
   const { user } = useUser();
   const [chatClient, setChatClient] = useState(null);
 
-  console.log("useStreamChat - User:", user?.id ? "Authenticated" : "Not authenticated");
-
   const {
     data: tokenData,
     isLoading,
@@ -23,22 +21,10 @@ export const useStreamChat = () => {
     queryFn: getStreamToken,
     enabled: !!user?.id,
     retry: 1,
-    onError: (error) => {
-      console.error("Stream token query failed:", error);
-    },
-    onSuccess: (data) => {
-      console.log("Stream token query succeeded:", data);
-    }
   });
 
   useEffect(() => {
     if (!tokenData?.token || !user?.id || !STREAM_API_KEY) {
-      console.log("Missing requirements:", { 
-        hasTokenData: !!tokenData, 
-        hasToken: !!tokenData?.token, 
-        hasUser: !!user?.id, 
-        hasApiKey: !!STREAM_API_KEY 
-      });
       return;
     }
 

@@ -38,12 +38,6 @@ const CallPage = () => {
   useEffect(() => {
     const initCall = async () => {
       if (!tokenData?.token || !user || !callId) {
-        console.log("Missing requirements for call:", { 
-          hasTokenData: !!tokenData, 
-          hasToken: !!tokenData?.token, 
-          hasUser: !!user, 
-          hasCallId: !!callId 
-        });
         return;
       }
 
