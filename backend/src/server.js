@@ -14,34 +14,44 @@ import * as Sentry from "@sentry/node";
 const app = express();
 
 app.use(express.json());
-// CORS configuration - permissive for development and production
+// CORS configuration - very permissive for development
 const corsOptions = {
     origin: function (origin, callback) {
+        console.log('CORS request from origin:', origin);
+        
         // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
+        if (!origin) {
+            console.log('CORS: Allowing request with no origin');
+            return callback(null, true);
+        }
         
         // Allow localhost for development
         if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+            console.log('CORS: Allowing localhost origin');
             return callback(null, true);
         }
         
         // Allow production client URL
         if (origin === ENV.CLIENT_URL) {
+            console.log('CORS: Allowing configured CLIENT_URL');
             return callback(null, true);
         }
         
         // Allow any Vercel URL (frontend deployments)
         if (origin.includes('vercel.app')) {
+            console.log('CORS: Allowing Vercel origin');
             return callback(null, true);
         }
         
         // Allow any HTTPS URL in development (for testing)
         if (ENV.NODE_ENV !== "production" && origin.startsWith('https://')) {
+            console.log('CORS: Allowing HTTPS origin in development');
             return callback(null, true);
         }
         
-        console.log('CORS blocked origin:', origin);
-        callback(new Error('Not allowed by CORS'));
+        // TEMPORARY: Allow all origins for debugging
+        console.log('CORS: Allowing all origins (temporary)');
+        return callback(null, true);
     },
     credentials: true
 };
