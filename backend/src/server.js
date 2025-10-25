@@ -14,49 +14,25 @@ import * as Sentry from "@sentry/node";
 const app = express();
 
 app.use(express.json());
-// CORS configuration - very permissive for development
-const corsOptions = {
-    origin: function (origin, callback) {
-        console.log('CORS request from origin:', origin);
-        
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) {
-            console.log('CORS: Allowing request with no origin');
-            return callback(null, true);
-        }
-        
-        // Allow localhost for development
-        if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
-            console.log('CORS: Allowing localhost origin');
-            return callback(null, true);
-        }
-        
-        // Allow production client URL
-        if (origin === ENV.CLIENT_URL) {
-            console.log('CORS: Allowing configured CLIENT_URL');
-            return callback(null, true);
-        }
-        
-        // Allow any Vercel URL (frontend deployments)
-        if (origin.includes('vercel.app')) {
-            console.log('CORS: Allowing Vercel origin');
-            return callback(null, true);
-        }
-        
-        // Allow any HTTPS URL in development (for testing)
-        if (ENV.NODE_ENV !== "production" && origin.startsWith('https://')) {
-            console.log('CORS: Allowing HTTPS origin in development');
-            return callback(null, true);
-        }
-        
-        // TEMPORARY: Allow all origins for debugging
-        console.log('CORS: Allowing all origins (temporary)');
-        return callback(null, true);
-    },
+// CORS configuration - allow all origins for now
+app.use(cors({
+    origin: true, // Allow all origins
     credentials: true
-};
+}));
 
-app.use(cors(corsOptions));
+// Additional CORS headers as backup
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+});
 app.use(clerkMiddleware()); // req.auth will be available in the request object
 
 app.get("/debug-sentry", (req, res) => {
