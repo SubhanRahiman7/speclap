@@ -13,8 +13,15 @@ export default function AuthProvider({ children }) {
     const interceptor = axiosInstance.interceptors.request.use(
       async (config) => {
         try {
+          console.log("Getting auth token for request to:", config.url);
           const token = await getToken();
-          if (token) config.headers.Authorization = `Bearer ${token}`;
+          console.log("Token received:", token ? "Present" : "Missing");
+          if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+            console.log("Authorization header set");
+          } else {
+            console.log("No token available, request will fail");
+          }
         } catch (error) {
           if (
             error.message?.includes("auth") ||
