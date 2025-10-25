@@ -13,7 +13,7 @@ const CustomChannelPreview = ({ channel, setActiveChannel, activeChannel }) => {
       onClick={() => setActiveChannel(channel)}
       className={`str-chat__channel-preview-messenger transition-colors flex items-center w-full text-left px-4 py-2 rounded-lg mb-1 font-medium hover:bg-blue-50/80 min-h-9 ${
         isActive
-          ? "bg-black/20! !hover:bg-black/20 border-l-8 border-purple-500 shadow-lg text-blue-900"
+          ? "bg-black/20 !hover:bg-black/20 border-l-8 border-purple-500 shadow-lg text-blue-900"
           : ""
       }`}
     >
