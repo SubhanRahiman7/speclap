@@ -43,12 +43,13 @@ app.get("/", (req, res) => {
   res.send("Hello World! 123");
 });
 
-// Test endpoint to verify CORS is working
+// Test endpoint to verify CORS is working on Vercel
 app.get("/test", (req, res) => {
   res.json({ 
-    message: "Backend is working!", 
+    message: "Backend is working on Vercel!", 
     timestamp: new Date().toISOString(),
-    cors: "CORS headers should be present"
+    cors: "CORS headers should be present",
+    environment: process.env.NODE_ENV || "unknown"
   });
 });
 
