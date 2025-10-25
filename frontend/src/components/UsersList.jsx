@@ -18,7 +18,10 @@ const UsersList = ({ activeChannel }) => {
       { name: 1 },
       { limit: 20 }
     );
-    return response.users;
+
+    const usersOnly = response.users.filter((user) => !user.id.startsWith("recording-"));
+
+    return usersOnly;
   }, [client]);
 
   const {
@@ -48,14 +51,14 @@ const UsersList = ({ activeChannel }) => {
       await channel.watch();
       setSearchParams({ channel: channel.id });
     } catch (error) {
-      console.log("Error creating DM", error);
-      Sentry.captureException(error, {
-        tags: { component: "UsersList" },
-        extra: {
-          context: "create_direct_message",
-          targetUserId: targetUser?.id,
-        },
-      });
+      console.log("Error creating DM", error),
+        Sentry.captureException(error, {
+          tags: { component: "UsersList" },
+          extra: {
+            context: "create_direct_message",
+            targetUserId: targetUser?.id,
+          },
+        });
     }
   };
 
@@ -78,7 +81,7 @@ const UsersList = ({ activeChannel }) => {
             key={user.id}
             onClick={() => startDirectMessage(user)}
             className={`str-chat__channel-preview-messenger  ${
-              isActive && "bg-black/20! !hover:bg-black/20 border-l-8 border-purple-500 shadow-lg0"
+              isActive && "!bg-black/20 !hover:bg-black/20 border-l-8 border-purple-500 shadow-lg0"
             }`}
           >
             <div className="flex items-center gap-2 w-full">
