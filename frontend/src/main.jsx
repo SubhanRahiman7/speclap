@@ -1,22 +1,19 @@
-import React from "react";
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "react-hot-toast";
-import AuthProvider from "./providers/AuthProvider.jsx";
 import * as Sentry from "@sentry/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React, { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { Toaster } from "react-hot-toast";
 import {
-  Routes,
-  Route,
   BrowserRouter,
-  useLocation,
-  useNavigationType,
   createRoutesFromChildren,
-  matchRoutes
-} from "react-router"
+  matchRoutes,
+  useLocation,
+  useNavigationType
+} from "react-router";
+import App from "./App.jsx";
+import "./index.css";
+import AuthProvider from "./providers/AuthProvider.jsx";
 
 
 const queryClient = new QueryClient();
@@ -29,7 +26,7 @@ if (!PUBLISHABLE_KEY) {
 }
 
 Sentry.init({
-  dsn: "https://0a28a9e1d4dbaaf883abf83eb15842ee@o4510223325003776.ingest.us.sentry.io/4510245534367744",
+  dsn: import.meta.env.VITE_SENRY_DSN,
   integrations: [ 
     Sentry.reactRouterV7BrowserTracingIntegration({
       useEffect: React.useEffect,
