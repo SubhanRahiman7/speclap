@@ -60,28 +60,32 @@ Sentry.setupExpressErrorHandler(app);
 
 const startServer = async () => {
   try {
-    console.log("Starting server...");
+    console.log("=== STARTING SERVER ===");
     console.log("Environment:", ENV.NODE_ENV);
     console.log("Port:", ENV.PORT);
+    console.log("MongoDB URI present:", !!ENV.MONGO_URI);
+    console.log("Clerk Secret Key present:", !!ENV.CLERK_SECRET_KEY);
+    console.log("Stream API Secret present:", !!ENV.STREAM_API_SECRET);
     
     // Try to connect to database, but don't fail if it doesn't work
     try {
       await connectDB();
-      console.log("Database connected successfully");
+      console.log("✅ Database connected successfully");
     } catch (dbError) {
-      console.warn("Database connection failed:", dbError.message);
+      console.warn("⚠️ Database connection failed:", dbError.message);
       console.log("Continuing without database...");
     }
     
     if (ENV.NODE_ENV !== "production") {
       app.listen(ENV.PORT, () => {
-        console.log("Server started on port:", ENV.PORT);
+        console.log("✅ Server started on port:", ENV.PORT);
       });
     } else {
-      console.log("Production mode - server ready for Vercel");
+      console.log("✅ Production mode - server ready for Vercel");
     }
   } catch (error) {
-    console.error("Error starting server:", error);
+    console.error("❌ Error starting server:", error);
+    console.error("Error details:", error.stack);
     process.exit(1); // Exit the process with a failure code
   }
 };
