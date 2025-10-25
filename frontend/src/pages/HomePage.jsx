@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { useStreamChat } from "../hooks/useStreamChat";
 import PageLoader from "../components/PageLoader";
+import CustomChannelHeader from "../components/CustomChannelHeader"
 
 import {
   Chat,
@@ -112,6 +113,7 @@ const HomePage = () => {
           <div className="chat-main">
             <Channel channel={activeChannel}>
               <Window>
+                <CustomChannelHeader/>
                 <MessageList />
                 <MessageInput />
               </Window>
