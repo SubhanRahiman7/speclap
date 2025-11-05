@@ -65,7 +65,19 @@ const CreateChannelModal = ({ onClose }) => {
   const handleChannelNameChange = (e) => {
     const value = e.target.value;
     setChannelName(value);
-    setError(validateChannelName(value));
+    // Only show error while typing if there was already an error
+    if (error) {
+      setError(validateChannelName(value));
+    }
+  };
+
+  const handleChannelNameBlur = () => {
+    // Validate on blur to show error if field is left empty
+    const validationError = validateChannelName(channelName);
+    setError(validationError);
+    if (validationError) {
+      toast.error(validationError);
+    }
   };
 
   const handleMemberToggle = (id) => {
@@ -78,8 +90,14 @@ const CreateChannelModal = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate channel name - show error if empty or invalid
     const validationError = validateChannelName(channelName);
-    if (validationError) return setError(validationError);
+    if (validationError) {
+      setError(validationError);
+      toast.error(validationError);
+      return;
+    }
 
     if (isCreating || !client?.user) return;
 
@@ -157,6 +175,7 @@ const CreateChannelModal = ({ onClose }) => {
                 type="text"
                 value={channelName}
                 onChange={handleChannelNameChange}
+                onBlur={handleChannelNameBlur}
                 placeholder="e.g. marketing"
                 className={`form-input ${error ? "form-input--error" : ""}`}
                 autoFocus
