@@ -15,33 +15,28 @@ const app = express();
 
 app.use(express.json());
 
-// CORS configuration
+// CORS configuration – allow production, localhost, and Vercel preview URLs
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
   "https://speclap-frontend.vercel.app",
 ];
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps or curl)
-      if (!origin) return callback(null, true);
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    // Vercel preview deployments use *.vercel.app
+    if (origin.endsWith(".vercel.app")) return callback(null, true);
+    return callback(null, false);
+  },
+  credentials: true,
+};
 
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
+app.use(cors(corsOptions));
 
-      // For unknown origins, disable CORS instead of throwing,
-      // so the function doesn't error out.
-      return callback(null, false);
-    },
-    credentials: true,
-  })
-);
-
-// Ensure preflight (OPTIONS) requests also get CORS headers
-app.options("*", cors({ origin: allowedOrigins, credentials: true }));
+// Preflight (OPTIONS) must use the same origin logic
+app.options("*", cors(corsOptions));
 app.use(clerkMiddleware()); // req.auth will be available in the request object
 
 app.get("/debug-sentry", (req, res) => {
